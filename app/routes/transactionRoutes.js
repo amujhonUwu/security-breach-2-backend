@@ -1,17 +1,8 @@
-// const express = require('express');
-// const Controller = require("../controllers/transactionController")
-// const router = express.Router();
+const express = require('express');
+const TransactionController = require('../controllers/transactionController');
+const router = express.Router();
 
+router.post('/transaction/create', TransactionController.createTransaction);
+router.get('/transactions/:walletId', TransactionController.getTransactionHistory);
 
-// router.get("/", Controller.getAll);
-
-// router.get("/:id", Controller.getOne);
-
-// router.post('/', Controller.create);
-
-// router.put('/:id', Controller.update);
-
-// router.delete('/:id', Controller.delete);
-
-
-// module.exports = router;
+module.exports = router;
