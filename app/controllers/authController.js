@@ -17,13 +17,12 @@ exports.login = (req, res) => {
             const user = results[0];
             const token = jwt.sign({ id: user.id }, key, { expiresIn: '1h' });
 
-            res.json({ success: true, message: 'Login successful.', token: token });
+            res.json({ success: true, message: 'Inicio de sesión exitoso', token: token });
         } else {
-            res.json({ success: false, message: 'Invalid username or password.' });
+            res.json({ success: false, message: 'Usuario o contraseña incorrectos' });
         }
     });
 };
-
 
 exports.register = (req, res) => {
     const { nombre, correo, celular, usuario, contrasena } = req.body;
@@ -32,9 +31,9 @@ exports.register = (req, res) => {
 
     db.query('INSERT INTO usuario (nombre, correo, celular, usuario, contrasena) VALUES (?, ?, ?, ?, ?)', [nombre, correo, celular, usuario, hash], (error, results) => {
         if (error) {
-          res.json({ success: false, message: 'Invalid username or password.' });
+          res.json({ success: false, message: 'Error registrando al usuario'});
           throw error;
         }
-        res.json({ success: true, message: 'User registered successfully.', userId: results.insertId });
+        res.json({ success: true, message: 'Registro exitoso', userId: results.insertId });
     });
 };

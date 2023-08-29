@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-const host = "192.168.100.164";
+const host = "127.0.0.1";
 const user = "amujhon";
 const passwort = "Olafqueashe1416";
 
